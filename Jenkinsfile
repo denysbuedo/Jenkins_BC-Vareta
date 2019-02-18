@@ -84,11 +84,30 @@ node{
 	}
   
 	stage('DATA DELIVERY'){
-
+		
+		//--- Starting ssh agent on Matlab Server ---
+		sshagent(['fsf_id_rsa']) { 
+		
+			/*--- Goal: Execute the matlab command, package and copy the results in the FTP server and clean the workspace.  
+			@file: jenkins.sh
+        	@Parameter{
+    			$1-action [run, delivery]
+        		$2-Name of the person who run the task ($owner_name)
+        		$3-EEG file ($eeg)
+        		$4-LeadField ($leadfield)
+        		$5-Surface ($surface)
+        		$6-Scalp ($scalp) 
+			} ---*/           
+       		echo "--- Tar and copy files result to FTP Server ---"
+        	sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.132'
+        	sh "ssh root@192.168.17.132 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh delivery $owner_name $eeg $leadfield $surface $scalp"	
+		}
 	}
   
 	stage('NOTIFICATION AND REPORT'){
-    
+    	
+    	//--- Inserting data in influxdb database ---/
+		step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, target: 'influxdb'])
 	}
 
 }
