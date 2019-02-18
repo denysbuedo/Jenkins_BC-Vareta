@@ -106,14 +106,14 @@ node{
   
 	stage('NOTIFICATION AND REPORT'){
     	
-    	/*
+    	//--- Sending notification email ---//
     	emailext (
-   			subject: "Job $JOB_NAME ${env.BUILD_NUMBER}'",
+   		subject: "Job $JOB_NAME ${env.BUILD_NUMBER}'",
     		body: """<p>Check console output at <a href=$BUILD_URL$JOB_NAME</a></p>""",
     		to: "buedo@neuroinformatics-collaboratory.org",
     		from: "buedo@neuroinformatics-collaboratory.org"
-		)
-    	*/
+	)
+    	
     	
     	//--- Inserting data in influxdb database ---/
 		step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, target: 'influxdb'])
