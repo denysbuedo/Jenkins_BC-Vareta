@@ -63,7 +63,24 @@ node{
 	}
   
 	stage('DATA PROCESSING (BC-Vareta)'){
-  
+  		
+  		//--- Starting ssh agent on Matlab Server ---
+		sshagent(['fsf_id_rsa']) { 
+		
+			/*--- Goal: Execute the matlab command, package and copy the results in the FTP server and clean the workspace.  
+			@file: jenkins.sh
+        	@Parameter{
+    			$1-action [run, delivery]
+        		$2-Name of the person who run the task ($owner_name)
+        		$3-EEG file ($eeg)
+        		$4-LeadField ($leadfield)
+        		$5-Surface ($surface)
+        		$6-Scalp ($scalp) 
+			} ---*/           
+       		echo "--- Run Matlab command ---"
+        	sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.132'
+        	sh "ssh root@192.168.17.132 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh run $owner_name $eeg $leadfield $surface $scalp"	
+		}
 	}
   
 	stage('DATA DELIVERY'){
