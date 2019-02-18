@@ -1,6 +1,6 @@
 /*
 @Autor: Denys Buedo Hidalgo
-@Proyecto: Jenkins_Freesurfer (https://github.com/denysbuedo/Jenkins_Freesurfer.git)
+@Proyecto: BC-Vareta Method (https://github.com/denysbuedo/Jenkins_BC-Vareta.git)
 @Joint China-Cuba Laboratory
 @Universidad de las Ciencias Informaticas
 */
