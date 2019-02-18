@@ -24,6 +24,7 @@ node{
 	def job_name = "${parser.attribute("job")}"
 	def build_ID ="${parser.attribute("build")}"
 	def owner_name ="${parser.attribute("name")}"
+	def notif_email ="${parser.attribute("email")}"
 	def eeg = "${parser.attribute("EEG")}"
 	def leadfield ="${parser.attribute("LeadField")}"
     def surface ="${parser.attribute("Surface")}"
@@ -110,10 +111,9 @@ node{
     	emailext (
    		subject: "Job $JOB_NAME ${env.BUILD_NUMBER}'",
     		body: """<p>Check console output at <a href=$BUILD_URL$JOB_NAME</a></p>""",
-    		to: "buedo@neuroinformatics-collaboratory.org",
-    		from: "buedo@neuroinformatics-collaboratory.org"
-	)
-    	
+    		to: "$notif_email",
+    		from: "denys.buedo@gmail.com"
+		)
     	
     	//--- Inserting data in influxdb database ---/
 		step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, target: 'influxdb'])
