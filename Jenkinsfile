@@ -52,8 +52,9 @@ node{
 			sh "scp $surface_file root@192.168.17.132:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
 			sh "scp $scalp_file root@192.168.17.132:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
 			
+			echo "Voy a borrar workspace"
 			//--- Remove data file in job workspace ---
-			sh "rm -f $JENKINS_HOME/jobs/BC-Vareta/builds/$build_ID/fileParameters/$data.txt"
+			sh "rm -f $JENKINS_HOME/jobs/BC-Vareta/builds/$build_ID/fileParameters/data.txt"
 			sh "rm -f $JENKINS_HOME/jobs/BC-Vareta/builds/$build_ID/fileParameters/$eeg"
 			sh "rm -f $JENKINS_HOME/jobs/BC-Vareta/builds/$build_ID/fileParameters/$leadfield"
 			sh "rm -f $JENKINS_HOME/jobs/BC-Vareta/builds/$build_ID/fileParameters/$surface"
