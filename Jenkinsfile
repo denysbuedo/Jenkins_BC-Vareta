@@ -112,7 +112,7 @@ node{
    		subject: "Job $JOB_NAME ${env.BUILD_NUMBER}'",
     		body: """<p>Check console output at <a href=$BUILD_URL$JOB_NAME</a></p>""",
     		to: "$notif_email",
-    		from: "denys.buedo@gmail.com"
+    		from: "buedo@neuroinformatics-collaboratory.org"
 		)
     	
     	//--- Inserting data in influxdb database ---/
