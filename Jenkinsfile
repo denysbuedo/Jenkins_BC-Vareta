@@ -110,7 +110,7 @@ node{
     	//--- Sending notification email ---//
     	emailext (
    		subject: "Job $JOB_NAME ${env.BUILD_NUMBER}'",
-    		body: """<p>Check console output at <a href=$BUILD_URL$JOB_NAME</a></p>""",
+    		body: """<p> Done!!! </p>""",
     		to: "$notif_email",
     		from: "buedo@neuroinformatics-collaboratory.org"
 		)
