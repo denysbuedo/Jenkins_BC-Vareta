@@ -46,7 +46,7 @@ node{
 			def scalp_file =  new File  ("$JENKINS_HOME/jobs/BC-Vareta/builds/$build_ID/fileParameters/$scalp")
 			
 			//--- Copying de data file to External_data folder in Matlab Server --- 
-			sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.132'
+			sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.129'
 			sh "scp $data_file root@192.168.17.129:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
 			sh "scp $eeg_file root@192.168.17.129:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
 			sh "scp $leadfield_file root@192.168.17.129:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
@@ -79,7 +79,7 @@ node{
         		$6-Scalp ($scalp) 
 			} ---*/           
        		echo "--- Run Matlab command ---"
-        	sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.132'
+        	sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.129'
         	sh "ssh root@192.168.17.129 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh run $owner_name $eeg $leadfield $surface $scalp"	
 		}
 	}
