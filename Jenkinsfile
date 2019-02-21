@@ -47,11 +47,11 @@ node{
 			
 			//--- Copying de data file to External_data folder in Matlab Server --- 
 			sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.132'
-			sh "scp $data_file root@192.168.17.132:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
-			sh "scp $eeg_file root@192.168.17.132:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
-			sh "scp $leadfield_file root@192.168.17.132:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
-			sh "scp $surface_file root@192.168.17.132:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
-			sh "scp $scalp_file root@192.168.17.132:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
+			sh "scp $data_file root@192.168.17.129:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
+			sh "scp $eeg_file root@192.168.17.129:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
+			sh "scp $leadfield_file root@192.168.17.129:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
+			sh "scp $surface_file root@192.168.17.129:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
+			sh "scp $scalp_file root@192.168.17.129:/root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/External_data/"
 			
 			echo "Voy a borrar workspace"
 			//--- Remove data file in job workspace ---
@@ -80,7 +80,7 @@ node{
 			} ---*/           
        		echo "--- Run Matlab command ---"
         	sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.132'
-        	sh "ssh root@192.168.17.132 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh run $owner_name $eeg $leadfield $surface $scalp"	
+        	sh "ssh root@192.168.17.129 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh run $owner_name $eeg $leadfield $surface $scalp"	
 		}
 	}
   
@@ -101,7 +101,7 @@ node{
 			} ---*/           
        		echo "--- Tar and copy files result to FTP Server ---"
         	sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.132'
-        	sh "ssh root@192.168.17.132 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh delivery $owner_name $eeg $leadfield $surface $scalp"	
+        	sh "ssh root@192.168.17.129 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh delivery $owner_name $eeg $leadfield $surface $scalp"	
 		}
 	}
   
