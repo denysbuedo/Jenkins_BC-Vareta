@@ -31,7 +31,7 @@ node{
 	def scalp="${parser.attribute("Scalp")}"
 	
 	//Setting Build description
-	def currentBuildName = "BUILD# $build_ID-$owner_name"
+	def currentBuildName = "BUILD#$build_ID-$owner_name"
 	currentBuild.displayName = "$currentBuildName"
 	
 	stage('DATA ACQUISITION'){
@@ -109,12 +109,12 @@ node{
 	stage('NOTIFICATION AND REPORT'){
     	
     	//--- Sending notification email ---//
-    	emailext (
-   		subject: "Job $JOB_NAME ${env.BUILD_NUMBER}'",
-    		body: """<p> Done!!! </p>""",
-    		to: "$notif_email",
-    		from: "buedo@neuroinformatics-collaboratory.org"
-		)
+//    	emailext (
+//   		subject: "Job $JOB_NAME ${env.BUILD_NUMBER}'",
+//    		body: """<p> Done!!! </p>""",
+//    		to: "$notif_email",
+//    		from: "buedo@neuroinformatics-collaboratory.org"
+//		)
     	
     	//--- Inserting data in influxdb database ---/
 		step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, target: 'influxdb'])
