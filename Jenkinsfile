@@ -102,7 +102,7 @@ node{
 			} ---*/           
        		echo "--- Tar and copy files result to FTP Server ---"
         	sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.129'
-        	sh "ssh root@192.168.17.129 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh delivery $owner_name $eeg $leadfield $surface $scalp"	
+        	sh "ssh root@192.168.17.129 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh delivery $owner_name $eeg $leadfield $surface $scalp $currentBuildName"	
 		}
 	}
   
