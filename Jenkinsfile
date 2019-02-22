@@ -33,11 +33,6 @@ node{
 	//Setting Build description
 	def currentBuildName = "BUILD#$build_ID-$owner_name"
 	currentBuild.displayName = "$currentBuildName"
-	
-	stage('CHECKOUT CODE (BC-Vareta)'){
-	
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'github_dbuedo-id', url: 'https://github.com/denysbuedo/BC-VARETA-toolbox-master.git']]])
-    }
 		
 	stage('DATA ACQUISITION'){
   		
