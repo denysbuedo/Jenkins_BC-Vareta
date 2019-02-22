@@ -31,7 +31,8 @@ node{
 	def scalp="${parser.attribute("Scalp")}"
 	
 	//Setting Build description
-	currentBuild.displayName = "BUILD# $build_ID-$owner_name"
+	def currentBuildName = "BUILD# $build_ID-$owner_name"
+	currentBuild.displayName = "$currentBuildName"
 	
 	stage('DATA ACQUISITION'){
   		
@@ -80,7 +81,7 @@ node{
 			} ---*/           
        		echo "--- Run Matlab command ---"
         	sh 'ssh -o StrictHostKeyChecking=no root@192.168.17.129'
-        	sh "ssh root@192.168.17.129 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh run $owner_name $eeg $leadfield $surface $scalp"	
+        	sh "ssh root@192.168.17.129 /root/matlab/BC-VARETA-toolbox-master/BC-VARETA-toolbox-master/jenkins.sh run $owner_name $eeg $leadfield $surface $scalp $currentBuildName"	
 		}
 	}
   
